@@ -4,7 +4,7 @@
 
 Gitbook docker helps to run gitbook without installing nodejs or anything.
 
-The [container]() is based on Ubuntu 14.04 (phusion/baseimage) and gitbook 2.6.4.
+The [container](https://hub.docker.com/r/jmaciasportela/gitbook-docker/) is based on Ubuntu 14.04 (phusion/baseimage) and gitbook 2.6.4.
 
 ## Usage
 
