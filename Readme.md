@@ -9,22 +9,19 @@ The [container]() is based on Ubuntu 14.04 (phusion/baseimage) and gitbook 2.6.4
 ## Usage
 
 Build the docker image:
-
-```
+```bash
 cd /PATH_DOCKERFILE
 docker build -t "gitbook-docker" .
 ```
 
-Clone a gitbook project in a know path `/home/yourname/yourbook` or anywhere, then run this command.
-
-```
+Clone a gitbook project in a know path:
+```bash
 cd /opt
 git clone git@github.com:GitbookIO/documentation.git
 ```
 
 Then run this command:
-
-```
+```bash
 docker run -d -t -i -p 4000:4000 -p 2022:22 -p 35729:35729 -v /opt/documentation:/opt/gitbook gitbook-docker
 ```
 
@@ -32,7 +29,7 @@ docker run -d -t -i -p 4000:4000 -p 2022:22 -p 35729:35729 -v /opt/documentation
 
 On Fedora or any Linux computer with SELINUX as your Docker Server: 
 If you get run `docker logs container_name` and the log appears like 
-```
+```bash
 Press CTRL+C to quit ...
 
 Live reload server started on port: 35729
@@ -42,7 +39,7 @@ EACCES, open '/gitbook/README.md'
 
 It is most likely caused by the SELINUX settings restricting the container from accessing the folder. To add a rule to allow the container access to yourbook folder as root run:
  
-```
+```bash
 chcon -Rt svirt_sandbox_file_t /home/yourname/yourbook/
 ```
 
