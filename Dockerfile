@@ -41,7 +41,7 @@ RUN echo '#!/bin/bash' > /usr/local/bin/ebook-convert && \
 # Configure RINIT gitbook script
 RUN mkdir /etc/service/gitbook-server
 RUN echo '#!/bin/sh' > /etc/service/gitbook-server/run
-RUN echo 'exec gitbook server /opt/gitbook' >> /etc/service/gitbook-server/run && chmod +x /etc/service/gitbook-server/run
+RUN echo 'exec gitbook serve /opt/gitbook' >> /etc/service/gitbook-server/run && chmod +x /etc/service/gitbook-server/run
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
