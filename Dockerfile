@@ -30,15 +30,12 @@ RUN apt-get update && apt-get install -y git curl calibre xvfb && \
 # Install latest version
 RUN gitbook install 2.6.7
 
-RUN mkdir /opt/gitbook
-WORKDIR /opt/gitbook
-
 RUN echo '#!/bin/bash' > /usr/local/bin/ebook-convert && \
     echo 'Run xvfb-run /usr/bin/ebook-convert $@' > /usr/local/bin/ebook-convert && \
     echo 'xvfb-run /usr/bin/ebook-convert "$@"'  > /usr/local/bin/ebook-convert && \
     chmod +x /usr/local/bin/ebook-convert
 
-RUN printf "#"'!'"/bin/bash\ncd /opt/books/\$1/\ngitbook install\ngitbook build\ngitbook pdf . ./\$1.pdf\nrm -fr ./_book/builds\ntar czvf book.tar.gz ./_book\ncp \$1.pdf /opt/books/\$1\ncp book.tar.gz /opt/books/\$1" > /build.sh
+RUN printf "#"'!'"/bin/bash\nrm -f /opt/books/$1/builds/*\ncd /opt/books/\$1/\ngitbook install\ngitbook build\ngitbook pdf . ./\$1.pdf\ntar czvf \$1.tar.gz _book/\ncp \$1.pdf /opt/books/\ncp \$1.tar.gz /opt/books" > /build.sh
 RUN chmod +x /build.sh
 
 # Clean up APT when done.
