@@ -28,7 +28,7 @@ RUN apt-get update && apt-get install -y git curl calibre xvfb && \
     npm install --unsafe-perm -g gitbook-cli gitbook-parsers
 
 # Install latest version
-RUN gitbook install 2.6.7
+RUN gitbook install 2.6.9
 
 RUN echo '#!/bin/bash' > /usr/local/bin/ebook-convert && \
     echo 'Run xvfb-run /usr/bin/ebook-convert $@' > /usr/local/bin/ebook-convert && \
