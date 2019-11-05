@@ -23,7 +23,7 @@ RUN printf "ClientAliveInterval 15\\nClientAliveCountMax 8" >> /etc/ssh/sshd_con
 
 # Install dependencies
 RUN apt-get update && apt-get install -y git curl calibre xvfb && \
-    curl -sL https://deb.nodesource.com/setup | bash - && \
+    curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
     apt-get install -y nodejs && \
     npm install --unsafe-perm -g gitbook-cli gitbook-parsers
 
